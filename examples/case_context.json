@@ -1,0 +1,12 @@
+{
+  "case_id": "CASE-SHELL-001",
+  "facts": {
+    "material_id": "MAT-01",
+    "shipment_id": "PO-501",
+    "start_date": "2026-11-01",
+    "days": 5,
+    "synthetic": true,
+    "note": "Read the SQLite records and local mock supplier API; do not treat this context as a supplier quote."
+  },
+  "previous_results": {}
+}
