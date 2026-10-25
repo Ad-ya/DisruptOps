@@ -48,6 +48,30 @@ class ApprovalWorkflowTests(SupplierDatabaseFixture):
         with self.assertRaises(ValueError):
             self.start()
 
+    def test_summary_displays_the_human_selected_plan_and_execution_scope(self):
+        from supply_chain_poc.integration.comparison_view import render_case
+
+        choices = [
+            ('bridge:QUOTE-B:100', '100 units from SUP-B', 'USD $1,250.00'),
+            ('protect_buffer:QUOTE-B:120', '120 units from SUP-B', 'USD $1,490.00'),
+            ('wait', 'no replacement purchase selected', None),
+        ]
+        for index, (option_id, expected_plan, expected_cost) in enumerate(choices):
+            with self.subTest(option_id=option_id):
+                thread_id = f'selected-plan-{index}'
+                runner = self.runner()
+                pending = self.start(runner, thread=thread_id)
+                approved = runner.resume(thread_id, {**pending['decision_template'], 'option_id': option_id})
+                summary = render_case(approved).split('Case material:', 1)[0]
+                self.assertEqual(approved['status'], 'approved')
+                self.assertIn(f'[{option_id}]', summary)
+                self.assertIn(expected_plan, summary)
+                self.assertIn('Execution scope: Decision record only; no purchase order placed.', summary)
+                if expected_cost:
+                    self.assertIn(expected_cost, summary)
+                else:
+                    self.assertNotIn('Approved purchase plan:', summary)
+
     def test_wrong_thread_snapshot_version_option_or_ack_cannot_consume_approval(self):
         pending = self.start()
         for changes in [{'thread_id': 'other'}, {'case_id': 'other'}, {'snapshot_id': 'old'},

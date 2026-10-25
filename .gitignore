@@ -15,3 +15,12 @@ build/
 dist/
 .ruff_cache/
 .DS_Store
+
+# Local recordings and demo outputs
+/decision.json
+/demo-decision.json
+/case.json
+/response.md
+/*.mov
+/*.mp4
+/trackA_ScenarioA.pdf

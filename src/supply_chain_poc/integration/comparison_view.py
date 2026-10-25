@@ -5,14 +5,25 @@ def render_case(case: dict) -> str:
     lines = [f'Thread: {case["thread_id"]}; status: {case["status"]}; version: {case["comparison_version"]}']
     if case.get('reason'):
         lines.append(case['reason'])
+    if decision := case.get('decision'):
+        lines += ['', f'Decision: {decision["action"]}; reviewer: {decision["reviewer_id"]}.']
+        if decision['action'] == 'approve':
+            option = decision['consequences']
+            lines.append(f'Approved option: {option["label"]} [{decision["option_id"]}]')
+            if purchase := option.get('purchase'):
+                cents = purchase['total_cents']
+                currency = case['comparison']['currency']
+                lines += [f'Approved purchase plan: {purchase["quantity"]} units from {purchase["supplier_id"]}; offer {purchase["offer_id"]}.',
+                          f'Planned usable date: {purchase["usable_date"]}.',
+                          f'Approved extra spend: {currency} ${cents // 100:,}.{cents % 100:02}.']
+            else:
+                lines.append('Approved plan: Wait for the original delivery; no replacement purchase selected.')
+        lines.append(f'Execution scope: {decision["scope"]}')
     if case.get('comparison'):
         lines += ['', render_comparison(case['comparison'])]
     if case.get('decision_template'):
         lines += ['', f'Approval expires at {case["approval_expires_at"]}.', case['decision_instructions'],
                   '', json.dumps(case['decision_template'], indent=2)]
-    elif case.get('decision'):
-        lines += ['', f'Decision: {case["decision"]["action"]}; reviewer: {case["decision"]["reviewer_id"]}.',
-                  case['decision']['scope']]
     return '\n'.join(lines)
 
 

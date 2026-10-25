@@ -1,15 +1,27 @@
 # DisruptOps
 
+## Problem statement
+
+Factories depend on incoming raw materials to fulfil production orders. When a supplier delays a shipment, the factory must decide whether existing stock can cover planned production or whether replacement material is worth the extra cost.
+
+DisruptOps compares three choices: wait for the original delivery, buy enough to bridge the shortage, or buy extra to protect safety stock. Using synthetic factory and supplier data, it considers production schedules, bills of materials, stock, delivery dates, supplier offers and past incidents. It explains potential unmet demand, buffer depletion and additional spending so a human can choose an option with clear consequences.
+
+## How this POC works
+
 A delayed PO, factory numbers in SQLite, and a small supplier API on localhost. Three agents assess the case: disruption and inventory run in parallel, then procurement recommends an option. The run stops so you can approve, reject, or send it back. It does not place an order or change stock.
 
 Needs Python 3.13.
+
+## Walkthrough video
+
+[Watch the DisruptOps walkthrough on YouTube](https://youtu.be/63Oiy-rx4bQ)
 
 ## Setup
 
 ```sh
 python3.13 -m venv .venv
 source .venv/bin/activate
-python -m pip install -r requirements-gemini.txt
+python -m pip install -r requirements.txt
 python -m pip install -e .
 ```
 
