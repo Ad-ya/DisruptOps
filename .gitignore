@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.env.*
+!.env.example
+*.sqlite
+*.sqlite-*
+*.db
+*.db-*
+*.zip
+sqlite_supplier_poc/supplier_fixture.json
+build/
+dist/
+.ruff_cache/
+.DS_Store
