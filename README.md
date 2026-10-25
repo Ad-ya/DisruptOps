@@ -2,7 +2,7 @@
 
 Supply-disruption decision support using typed agents, grounded tools and human approval.
 
-This branch imports phase 2: typed findings and reproducible synthetic data with tests.
+This branch imports phase 3: grounded supplier tools and consequence calculations with tests.
 
 Use Python 3.13 and install the pinned dependencies:
 
