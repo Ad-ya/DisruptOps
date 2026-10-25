@@ -1,0 +1,24 @@
+output/pdf/Aditya_Mukhopadhyay_Track_A_Technical_Writeup.pdf
+  s_874d9b770530b6::t_ad4ae95c99d9f8 1-93
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "850882dadcc3b6ed66ee2026506c438d0a435993",
+  "prompts": {},
+  "humans": {
+    "h_65ec2e9ce50a29": {
+      "author": "Aditya Mukhopadhyay <101496924+Ad-ya@users.noreply.github.com>"
+    }
+  },
+  "sessions": {
+    "s_874d9b770530b6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "01a169f1-f188-7650-b3db-c3a4b74d3766",
+        "model": "unknown"
+      },
+      "human_author": "Aditya Mukhopadhyay <101496924+Ad-ya@users.noreply.github.com>"
+    }
+  }
+}
