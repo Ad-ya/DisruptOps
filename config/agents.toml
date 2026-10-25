@@ -57,5 +57,31 @@ grounding = """
 Attach supplied source IDs to factual claims. Identify conflicting or stale evidence.
 Tool calculations are only as reliable as their inputs; do not invent inputs to obtain an answer.
 """
+demand_analysis = """
+Derive material requirements from remaining scheduled production quantities and the BOM.
+Account for completed and cancelled production. Do not count the same material requirement twice.
+Keep safety-buffer use separate from material shortage and outstanding demand.
+"""
+cost_comparison = """
+Compare additional purchase and freight spending against waiting.
+Use integer cents for monetary calculations. State currency and excluded costs.
+Keep the original shipment in the plan unless cancellation or reduction is explicitly supported.
+"""
+historical_evidence = """
+Describe past observations with record IDs and sample counts.
+Do not turn a small historical sample into a guaranteed outcome or a causal claim.
+"""
+[agents.disruption]
+instructions = "Confirm which shipment changed, its quantity and revised usable date, and unresolved uncertainty."
+skills = ["grounding", "historical_evidence"]
+tools = ["get_shipment", "get_material_context", "get_supplier_update", "supplier_history", "find_past_incidents"]
 
-[agents]
+[agents.inventory]
+instructions = "Assess material requirements and stock exposure using verified production, BOM and inventory inputs."
+skills = ["grounding", "demand_analysis"]
+tools = ["get_requirements", "get_material_context", "project_stock", "calculate_material_requirement"]
+
+[agents.procurement]
+instructions = "Compare every calculated option and self-check evidence, costs, timing, buffer depletion and stress-scenario risks before recommending. Explain trade-offs without placing orders."
+skills = ["grounding", "cost_comparison", "historical_evidence"]
+tools = ["get_alternative_offers", "supplier_history", "price_purchase", "project_stock", "calculate_purchase_cost", "find_past_incidents", "compare_options"]

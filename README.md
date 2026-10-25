@@ -2,7 +2,7 @@
 
 Supply-disruption decision support using typed agents, grounded tools and human approval.
 
-This branch imports phase 3: grounded supplier tools and consequence calculations with tests.
+This branch imports phase 4: three specialist roles and gemini tool-loop tests.
 
 Use Python 3.13 and install the pinned dependencies:
 
