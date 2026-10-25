@@ -1,0 +1,31 @@
+README.md
+  h_65ec2e9ce50a29 24
+  s_874d9b770530b6::t_df96f4d2566c45 3-10,15-18
+.gitignore
+  s_874d9b770530b6::t_0c44e778933f6f 18-26
+src/supply_chain_poc/integration/comparison_view.py
+  s_874d9b770530b6::t_6b77bd31fa1379 8-21
+tests/test_approval_workflow.py
+  s_874d9b770530b6::t_7056897c899358 51-74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "156791854f0ca90297e9016ffe4ec4602ada311a",
+  "prompts": {},
+  "humans": {
+    "h_65ec2e9ce50a29": {
+      "author": "Aditya Mukhopadhyay <101496924+Ad-ya@users.noreply.github.com>"
+    }
+  },
+  "sessions": {
+    "s_874d9b770530b6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "01a169f1-f188-7650-b3db-c3a4b74d3766",
+        "model": "unknown"
+      },
+      "human_author": "Aditya Mukhopadhyay <101496924+Ad-ya@users.noreply.github.com>"
+    }
+  }
+}
